@@ -1,5 +1,12 @@
-import { BrowserRouter, Routes, Router } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import GlobalStyles from './Styles/Global'
+//pages
+import Home from './pages/Home'
+import About from './pages/About'
+import Register from './pages/Register'
+import NotFound from './pages/NotFound'
+//components
+import Header from './Components/Header'
 
 function App() {
 
@@ -7,11 +14,12 @@ function App() {
     <>
       <GlobalStyles />
       <BrowserRouter>
+        <Header />
         <Routes>
-
-          <Router path='/' elements={<Home />} />
-          <Router path='/about' elements={<About />} />
-          <Router path='*' elements={<NotFound />} />
+          <Route path='/' elements={<Home />} />
+          <Route path='/about' elements={<About />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='*' elements={<NotFound />} />
 
         </Routes>
       </BrowserRouter>

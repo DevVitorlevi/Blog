@@ -1,8 +1,17 @@
-import React from 'react'
-
+import { NavLink } from "react-router-dom"
+import { Headerdiv } from '../Styles/Header'
 const Header = () => {
     return (
-        <div>Header</div>
+        <>
+            <Headerdiv>
+
+                <h1><NavLink to='/'>Blog</NavLink></h1>
+                <ul>
+                    <li><NavLink to='/'>Home</NavLink></li>
+                    <li><NavLink to='/about'>Sobre</NavLink></li>
+                </ul>
+            </Headerdiv>
+        </>
     )
 }
 
