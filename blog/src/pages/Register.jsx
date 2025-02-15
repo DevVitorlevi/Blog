@@ -1,5 +1,5 @@
-import React, { use, useState } from 'react'
-
+import React, { useState } from 'react'
+import { Container, Form } from '../Styles/Form';
 const Register = () => {
     const [formData, setFormdata] = useState({
         name: '',
