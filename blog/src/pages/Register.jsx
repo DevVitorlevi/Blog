@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form } from '../Styles/Form';
+import { useAuth } from '../Hooks/useAuth';
 
 const Register = () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -10,6 +11,7 @@ const Register = () => {
         senha: '',
         confirm: '',
     });
+    const { createUser, loading } = useAuth()
 
     const [error, setError] = useState({
         name: '',
@@ -26,7 +28,7 @@ const Register = () => {
         setError({ ...error, [name]: '' });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let hasError = false;
         let newError = { name: '', email: '', senha: '', confirm: '' };
@@ -55,10 +57,14 @@ const Register = () => {
             setError(newError);
             return;
         }
+        const res = await createUser(formData)
 
         // Se não houver erros, limpa os campos
         setFormData({ name: '', email: '', senha: '', confirm: '' });
         setError({ name: '', email: '', senha: '', confirm: '' });
+
+
+        console.log(res)
     };
 
     return (
@@ -82,7 +88,8 @@ const Register = () => {
                     <input type="password" name="confirm" value={formData.confirm} onChange={handleChange} />
                     {error.confirm && <p style={{ color: 'red' }}>{error.confirm}</p>}
 
-                    <button type="submit">Cadastrar</button>
+                    {!loading && <button type='submit'>Cadastre</button>}
+                    {loading && <button type='submit' disabled>Aguarde...</button>}
                 </form>
             </Form>
         </Container>
