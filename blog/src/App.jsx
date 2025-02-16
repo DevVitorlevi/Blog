@@ -4,6 +4,7 @@ import GlobalStyles from './Styles/Global'
 import Home from './pages/Home'
 import About from './pages/About'
 import Register from './pages/Register'
+import Login from './pages/Login'
 import NotFound from './pages/NotFound'
 //components
 import Header from './Components/Header'
@@ -19,11 +20,11 @@ function App() {
           <Route path='/' elements={<Home />} />
           <Route path='/about' elements={<About />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
           <Route path='*' elements={<NotFound />} />
 
         </Routes>
       </BrowserRouter>
-      <h1>Blog</h1>
     </>
   )
 }
