@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Form } from '../Styles/Form';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from 'firebase/auth'
 
-const Register = () => {
+const Login = () => {
 
     const [formData, setFormData] = useState({
         email: '',
