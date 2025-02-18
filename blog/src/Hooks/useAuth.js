@@ -24,7 +24,7 @@ export const useAuth = () => {
                 formData.email,
                 formData.senha
             )
-
+            
             await updateProfile(user,{
                 displayName:formData.name
             })
