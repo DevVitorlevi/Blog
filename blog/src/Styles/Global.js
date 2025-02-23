@@ -12,6 +12,10 @@ const GlobalStyles = createGlobalStyle`
         width: 100vw;
         height: 100vh;
     }
+    span{
+      color: aliceblue;
+      font-size: 90px;
+    }
 
 
 `;

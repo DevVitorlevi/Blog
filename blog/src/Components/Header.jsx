@@ -1,9 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { Headerdiv } from "../Styles/Header";
-import { useAuthValue } from "../Context/AuthContext"; // Corrigir para usar o useAuthValue, já que você usa o contexto aqui
+import { useAuthValue } from "../Context/AuthContext";
+import { useAuth } from "../Hooks/useAuth"; // Corrigir a importação
 
 const Header = () => {
-    const { user } = useAuthValue(); // Acesse diretamente do contexto
+    const { user } = useAuthValue(); // Acessa o usuário do contexto
+    const { logout } = useAuth(); // Função de logout
+
 
     return (
         <Headerdiv>
@@ -20,23 +23,23 @@ const Header = () => {
                             <NavLink to="/register">Cadastrar</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/login">Entre</NavLink>
+                            <NavLink to="/login">Entrar</NavLink>
                         </li>
                     </>
                 )}
                 {user && (
                     <>
                         <li>
-                            <NavLink to="/profile">Perfil</NavLink> {/* Exemplo de página de perfil */}
+                            <NavLink to="/profile">Perfil</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/createpost'>Criar Post</NavLink>
+                            <NavLink to="/createpost">Criar Post</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/dashboard'>DashBoard</NavLink>
+                            <NavLink to="/dashboard">Dashboard</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/logout">Sair</NavLink> {/* Exemplo de logout */}
+                            <span onClick={logout}>Sair</span> {/* Botão para sair */}
                         </li>
                     </>
                 )}
