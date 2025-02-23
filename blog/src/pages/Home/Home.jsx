@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"; // Importa hooks do React para gerenciar estado e efeitos colaterais
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Importa funções do Firebase para autenticação
-import Register from "./Register"; // Importa o componente de registro
+import Register from "../Auth/Register"; // Importa o componente de registro
 
 const Home = () => {
     // Estado para armazenar os dados do usuário autenticado

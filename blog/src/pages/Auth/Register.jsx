@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Container, Form } from '../Styles/Form';
-import { useAuth, signInWithGoogle } from '../Hooks/useAuth';
+import { Container, Form } from '../../Styles/Form';
+import { useAuth, signInWithGoogle } from '../../Hooks/useAuth';
 
 const Register = () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

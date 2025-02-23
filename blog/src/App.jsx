@@ -1,11 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyles from "./Styles/Global";
 // Páginas
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Register from "./pages/Register";
+import Home from "./pages/Home/Home";
+import About from "./pages/Home/About";
+import Register from "./pages/Auth/Register";
 import Login from "./pages/Login";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/Home/NotFound";
+import CreatePost from "./pages/Post/CreatePost";
+import Profile from "./pages/Profile/Profile";
+import Dash from "./pages/Dashboard/Dash";
+
 // Componentes
 import Header from "./Components/Header";
 import { AuthProvider } from "./Context/AuthContext";
@@ -41,6 +45,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Dash />} />
+          <Route path="/createpost" element={<CreatePost />} />
           <Route path="*" element={<NotFound />} /> {/* Página 404 */}
         </Routes>
       </BrowserRouter>
