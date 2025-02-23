@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Form } from '../Styles/Form';
+import { Container, Form } from '../../Styles/Form';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from 'firebase/auth'
 
 const Login = () => {

@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import GlobalStyles from "./Styles/Global";
 // Páginas
 import Home from "./pages/Home/Home";
 import About from "./pages/Home/About";
 import Register from "./pages/Auth/Register";
-import Login from "./pages/Login";
+import Login from "./pages/Auth/Login";
 import NotFound from "./pages/Home/NotFound";
 import CreatePost from "./pages/Post/CreatePost";
 import Profile from "./pages/Profile/Profile";
@@ -43,11 +43,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/dashboard" element={<Dash />} />
-          <Route path="/createpost" element={<CreatePost />} />
+          <Route path="/register" element={!usuario ? <Register /> : <Navigate to='/' />} />
+          <Route path="/login" element={!usuario ? <Login /> : <Navigate to='/' />} />
+          <Route path="/profile" element={!usuario ? <Login /> : <Navigate to='/profile' />} />
+          <Route path="/dashboard" element={!usuario ? <Login /> : <Navigate to='/dashboard' />} />
+          <Route path="/createpost" element={!usuario ? <Login /> : <Navigate to='/dashboard' />} />
           <Route path="*" element={<NotFound />} /> {/* Página 404 */}
         </Routes>
       </BrowserRouter>

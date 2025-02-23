@@ -30,6 +30,12 @@ const Header = () => {
                             <NavLink to="/profile">Perfil</NavLink> {/* Exemplo de página de perfil */}
                         </li>
                         <li>
+                            <NavLink to='/createpost'>Criar Post</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/dashboard'>DashBoard</NavLink>
+                        </li>
+                        <li>
                             <NavLink to="/logout">Sair</NavLink> {/* Exemplo de logout */}
                         </li>
                     </>
