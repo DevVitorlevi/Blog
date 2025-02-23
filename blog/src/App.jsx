@@ -18,22 +18,16 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
-  const [usuario, setUsuario] = useState(undefined); // Inicializa como indefinido para controlar carregamento
-  const { auth } = useAuth(); // Obtém a instância de autenticação do contexto
+  const { auth } = useAuth();
+  const [usuario, setUsuario] = useState(null); // Inicialize com null, já que undefined é usado para carregamento
 
   useEffect(() => {
-    // Observa mudanças na autenticação
     const cancelarObservador = onAuthStateChanged(auth, (usuario) => {
       setUsuario(usuario); // Define o usuário autenticado ou null se não autenticado
     });
 
     return () => cancelarObservador(); // Remove o observador ao desmontar o componente
-  }, [auth]); // Reexecuta o efeito somente se 'auth' mudar
-
-  const carregando = usuario === undefined; // Define se está carregando a autenticação
-  if (carregando) {
-    return <p className="loading">Carregando...</p>; // Mostra mensagem de carregamento antes de exibir a aplicação
-  }
+  }, [auth]);
 
   return (
     <AuthProvider value={usuario}>
