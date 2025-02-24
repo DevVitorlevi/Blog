@@ -31,6 +31,7 @@ function App() {
 
   return (
     <AuthProvider value={usuario}>
+      <img src={usuario.photoURL} alt="dasds" />
       <GlobalStyles />
       <BrowserRouter>
         <Header />

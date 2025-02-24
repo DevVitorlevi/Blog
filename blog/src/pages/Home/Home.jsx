@@ -12,6 +12,7 @@ const Home = () => {
         // Firebase observa mudanças no estado de autenticação do usuário
         const cancelarObservador = onAuthStateChanged(autenticacao, (usuario) => {
             setUsuario(usuario); // Se o usuário estiver autenticado, atualiza o estado com os dados dele
+            console.log(usuario)
         });
 
         return () => cancelarObservador(); // Remove o observador ao desmontar o componente, evitando vazamento de memória
@@ -21,7 +22,9 @@ const Home = () => {
         <div>
             {/* Se o usuário estiver logado, exibe uma mensagem de boas-vindas com seu nome */}
             {/* Caso contrário, exibe o formulário de registro */}
-            {usuario ? <p>Bem-vindo, {usuario.displayName}</p> : <Register />}
+            {usuario ? <p>Bem-vindo, {usuario.photoURL}</p> : <Register />}
+
+
         </div>
     );
 };
