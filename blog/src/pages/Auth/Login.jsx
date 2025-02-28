@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Container, Form } from '../../Styles/Form';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from 'firebase/auth'
+import { useAuth } from '../../Hooks/useAuth';
 
 const Login = () => {
-
+    const { login, loading } = useAuth()
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const [formData, setFormData] = useState({
         email: '',
         senha: '',
@@ -22,7 +23,7 @@ const Login = () => {
         setError({ ...error, [name]: '' });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let hasError = false;
         let newError = { email: '', senha: '', };
@@ -42,7 +43,8 @@ const Login = () => {
             setError(newError);
             return;
         }
-
+        const res = await login(formData)
+        console.log(res)
         // Se não houver erros, limpa os campos
         setFormData({ email: '', senha: '', });
         setError({ email: '', senha: '', });

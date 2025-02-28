@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"; // Importa hooks do React para gerenciar estado e efeitos colaterais
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Importa funções do Firebase para autenticação
+import { Link } from "react-router-dom";
 import Register from "../Auth/Register"; // Importa o componente de registro
 
 const Home = () => {
@@ -20,10 +21,7 @@ const Home = () => {
 
     return (
         <div>
-            {/* Se o usuário estiver logado, exibe uma mensagem de boas-vindas com seu nome */}
-            {/* Caso contrário, exibe o formulário de registro */}
-            {usuario ? <p>Bem-vindo, {usuario.photoURL}</p> : <Register />}
-
+            <Link to='/dashboard'>Quimica</Link>
 
         </div>
     );

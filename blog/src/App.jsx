@@ -31,7 +31,6 @@ function App() {
 
   return (
     <AuthProvider value={usuario}>
-      <img src={usuario.photoURL} alt="dasds" />
       <GlobalStyles />
       <BrowserRouter>
         <Header />
@@ -40,9 +39,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/register" element={!usuario ? <Register /> : <Navigate to='/' />} />
           <Route path="/login" element={!usuario ? <Login /> : <Navigate to='/' />} />
-          <Route path="/profile" element={!usuario ? <Login /> : <Navigate to='/profile' />} />
-          <Route path="/dashboard" element={!usuario ? <Login /> : <Navigate to='/dashboard' />} />
-          <Route path="/createpost" element={!usuario ? <Login /> : <Navigate to='/dashboard' />} />
+          <Route path="/profile" element={!usuario ? <Profile /> : <Navigate to='/login' />} />
+          <Route path="/dashboard" element={!usuario ? <Dash /> : <Navigate to='/login' />} />
+          <Route path="/createpost" element={!usuario ? <CreatePost /> : <Navigate to='/login' />} />
           <Route path="*" element={<NotFound />} /> {/* Página 404 */}
         </Routes>
       </BrowserRouter>

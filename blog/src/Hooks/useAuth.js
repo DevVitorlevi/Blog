@@ -46,6 +46,18 @@ export const useAuth = () => {
         checkIsCancelled();
         signOut(auth);
     };
+    const login = async(data) =>{
+        checkIsCancelled()
+        setLoading(true)
+
+        try {
+            await signInWithEmailAndPassword(auth,data.email,data.passoword)
+        } catch (error) {
+            console.log(error)
+        }
+
+        setLoading(false)
+    }
 
     useEffect(() => {
         return () => setCancelled(true);
@@ -55,6 +67,7 @@ export const useAuth = () => {
         auth,
         createUser,
         logout,
+        login,
         loading
     };
 };
